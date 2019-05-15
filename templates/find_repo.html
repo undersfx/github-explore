@@ -10,26 +10,26 @@
 
     {% for item in repos %}
     <form name='item' type="item" method="POST"> {% csrf_token %}
-        <input type='hidden' name='id' value={{item.id}} />
-        <input type='hidden' name='html_url' value={{item.html_url}} />
+        <input type='hidden' name='id' value="{{item.id}}" />
+        <input type='hidden' name='html_url' value="{{item.html_url}}" />
 
         <h1><a href="{{item.html_url}}">{{item.name|capfirst}}</a></h1>
-        <input type='hidden' name='name' value={{item.name}} />
+        <input type='hidden' name='name' value="{{item.name}}" />
         
         <p>{{item.description}}</p>
-        <input type='hidden' name='description' value={{item.description}} />
+        <input type='' name='description' value="{{item.description}}" />
         
         <p>Created at: {{item.created_at|slice:":10" }}</p>
-        <input type='hidden' name='created_at' value={{item.created_at}} />
+        <input type='hidden' name='created_at' value="{{item.created_at}}" />
         
         <p>Owner: {{item.owner.login}}</p>
-        <input type='hidden' name='login' value={{item.owner.login}} />
+        <input type='hidden' name='login' value="{{item.owner.login}}" />
         
         <p>Forks: {{item.forks_count}}</p>
-        <input type='hidden' name='forks_count' value={{item.forks_count}} />
+        <input type='hidden' name='forks_count' value="{{item.forks_count}}" />
         
         <p>Stars: {{item.stargazers_count}}</p>
-        <input type='hidden' name='stargazers_count' value={{item.stargazers_count}} />
+        <input type='hidden' name='stargazers_count' value="{{item.stargazers_count}}" />
         
         <button type="submit">Save</button>
     </form>
