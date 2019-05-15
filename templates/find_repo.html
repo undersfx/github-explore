@@ -5,8 +5,16 @@
     <form>
         <input class="form-control form-control-lg form-control-borderless" name='search' type="search" placeholder="Search topics">
         
-        <button class="btn btn-lg btn-success" type="submit" method='POST'>Search</button>
+        <button class="btn btn-lg btn-success" type="submit">Search</button>
     </form>
 
-{{repos}}
+    {% for item in repos %}
+        <h1><a href="{{item.html_url}}">{{item.name|capfirst}}</a></h1>
+        <p>{{item.description}}</p>
+        <p>Created at: {{item.created_at|slice:":10" }}</p>
+        <p>Owner: {{item.owner.login}}</p>
+        <p>Forks: {{item.forks_count}}</p>
+        <p>Stars: {{item.stargazers_count}}</p>
+        <p>Watchers: {{item.watchers_count}}</p>
+    {% endfor %}
 {% endblock %}

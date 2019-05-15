@@ -6,10 +6,12 @@ import json
 # Create your views here.
 def index(request, *args, **kwargs):
     print(request.GET, args, kwargs)
+    print(request.POST, args, kwargs)
+
     repo_search = request.GET.get('search')
 
     if repo_search:
-        r = requests.get('https://api.github.com/search/topics?q={}+is:featured'.format(repo_search),
+        r = requests.get('https://api.github.com/search/repositories?q=topic:{}'.format(repo_search), 
                         headers={'Accept': 'application/vnd.github.mercy-preview+json'})
 
         data = json.loads(r.text)
