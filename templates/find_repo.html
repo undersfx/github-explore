@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Find Featured Repos by Topic</h1>
-    
-    <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics">
+<h1>Find Featured Repos</h1>
+    <form>
+        <input class="form-control form-control-lg form-control-borderless" name='search' type="search" placeholder="Search topics">
+        
+        <button class="btn btn-lg btn-success" type="submit" method='POST'>Search</button>
+    </form>
 
-    <button class="btn btn-lg btn-success" type="submit" method='POST'>Search</button>
-
+{{repos}}
 {% endblock %}
