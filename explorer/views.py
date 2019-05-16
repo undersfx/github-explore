@@ -6,41 +6,32 @@ import json
 
 # Create your views here.
 def index(request, *args, **kwargs):
-    if request.method == 'POST':
-        print('POST: {}, {}, {}'.format(request.POST, args, kwargs))
+    '''Função que renderiza a pagina raíz com a chamada da API do Github e salva formulário do PostgreSQL'''
 
+    if request.method == 'POST':
+        # Cria uma cópias dos valores passados para adição ao banco
         data = dict(request.POST.dict())
         del data['csrfmiddlewaretoken']
 
-        rep = Repository(**data)
-
+        # Salva no banco de dados
         try:
+            rep = Repository(**data)
             rep.save()
         except Exception as e:
             print(e)
-        
-        #Example:
-        # {'csrfmiddlewaretoken': 'Z1vlk5jq7CfMiqtonFNwWgD5voJLOosMqaUAhVbvGMyYq84JFzvmNmb21Fnbaq40',
-        # 'id': '45717250', 
-        # 'html_url': 'https://github.com/tensorflow/tensorflow', 
-        # 'name': 'tensorflow', 
-        # 'description': 'An Open Source Machine Learning Framework for Everyone', 
-        # 'created_at': '2015-11-07T01:19:20Z', 
-        # 'login': 'tensorflow', 
-        # 'forks_count': '74685', 
-        # 'stargazers_count': '127613'}
 
+    # Caso passados parâmetros de busca na requisição get, consome a API do Github
     repo_search = request.GET.get('search')
-    print('GET: {}, {}, {}'.format(request.GET, args, kwargs))
 
     if repo_search is not None:
         r = requests.get('https://api.github.com/search/repositories?q=topic:{}'.format(repo_search), 
                         headers={'Accept': 'application/vnd.github.mercy-preview+json'})
 
+        # Parse da resposta JSON da API do Github                
         data = json.loads(r.text)
-        
-        featured = data['items']
 
+        # Passa para renderização os resultados
+        featured = data['items']
         context = {'repos': featured}
     else:
         context = {}

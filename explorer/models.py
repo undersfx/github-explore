@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 class Topic(models.Model):
+    '''Modelo para o consumo da API de Tópicos'''
+
     created_by          = models.CharField(max_length=128) # 'Guido van Rossum',
     description         = models.CharField(max_length=128) # 'Python is a dynamically typed programming language designed '
     display_name        = models.CharField(max_length=128) # 'Python',
@@ -15,7 +17,8 @@ class Topic(models.Model):
     updated_at          = models.DateTimeField() # '2019-05-15T02=53=55Z'}
 
 class Repository(models.Model):
-    # csrfmiddlewaretoken = models.CharField(max_length=128) # 'Z1vlk5jq7CfMiqtonFNwWgD5voJLOosMqaUAhVbvGMyYq84JFzvmNmb21Fnbaq40',
+    '''Modelo para o consumo da API de Reposítórios'''
+    
     id                  = models.DecimalField(decimal_places=0, max_digits=32, primary_key=True) # '45717250', 
     html_url            = models.CharField(max_length=128) # 'https://github.com/tensorflow/tensorflow', 
     name                = models.CharField(max_length=128) # 'tensorflow', 
