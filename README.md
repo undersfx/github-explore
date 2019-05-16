@@ -1,4 +1,4 @@
-# github-explore
+# Github Explore
 Simple exercice to fetch and save trending repos on github
 
 ## Rodar o projeto Localmente (requer python3 e pip instalados):
