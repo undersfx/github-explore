@@ -1,17 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Repository
 import requests
 import json
 
 # Create your views here.
 def index(request, *args, **kwargs):
-    print('GET: {}, {}, {}'.format(request.GET, args, kwargs))
-    print('POST: {}, {}, {}'.format(request.POST, args, kwargs))
+    if request.method == 'POST':
+        print('POST: {}, {}, {}'.format(request.POST, args, kwargs))
 
-    # TODO:
-    # Quando chegar uma solicitação de POST, salvar no banco de dados
-    if request.POST is not None:
-        data = request.POST.dict()
+        data = dict(request.POST.dict())
+        del data['csrfmiddlewaretoken']
+
+        rep = Repository(**data)
+
+        try:
+            rep.save()
+        except Exception as e:
+            print(e)
         
         #Example:
         # {'csrfmiddlewaretoken': 'Z1vlk5jq7CfMiqtonFNwWgD5voJLOosMqaUAhVbvGMyYq84JFzvmNmb21Fnbaq40',
@@ -25,6 +31,7 @@ def index(request, *args, **kwargs):
         # 'stargazers_count': '127613'}
 
     repo_search = request.GET.get('search')
+    print('GET: {}, {}, {}'.format(request.GET, args, kwargs))
 
     if repo_search is not None:
         r = requests.get('https://api.github.com/search/repositories?q=topic:{}'.format(repo_search), 
