@@ -4,29 +4,29 @@ from django.db import models
 class Topic(models.Model):
     '''Modelo para o consumo da API de Tópicos'''
 
-    created_by          = models.CharField(max_length=128) # 'Guido van Rossum',
-    description         = models.CharField(max_length=128) # 'Python is a dynamically typed programming language designed '
-    display_name        = models.CharField(max_length=128) # 'Python',
-    name                = models.CharField(max_length=128) # 'python',
-    short_description   = models.CharField(max_length=512) # 'Python is a dynamically typed programming language.',
-    released            = models.CharField(max_length=128) # 'February 20, 1991',
-    curated             = models.BooleanField() # True,
-    featured            = models.BooleanField() # True,
-    score               = models.DecimalField(decimal_places=0, max_digits=16) # 6896.7534,
-    created_at          = models.DateTimeField() # '2016-12-07T00=07=02Z',
-    updated_at          = models.DateTimeField() # '2019-05-15T02=53=55Z'}
+    created_by          = models.CharField(max_length=128)
+    description         = models.CharField(max_length=128)
+    display_name        = models.CharField(max_length=128)
+    name                = models.CharField(max_length=128)
+    short_description   = models.CharField(max_length=512)
+    released            = models.CharField(max_length=128)
+    curated             = models.BooleanField()
+    featured            = models.BooleanField()
+    score               = models.DecimalField(decimal_places=0, max_digits=16)
+    created_at          = models.DateTimeField()
+    updated_at          = models.DateTimeField()
 
 class Repository(models.Model):
     '''Modelo para o consumo da API de Reposítórios'''
     
-    id                  = models.DecimalField(decimal_places=0, max_digits=32, primary_key=True) # '45717250', 
-    html_url            = models.CharField(max_length=128) # 'https://github.com/tensorflow/tensorflow', 
-    name                = models.CharField(max_length=128) # 'tensorflow', 
-    description         = models.CharField(max_length=256) # 'An Open Source Machine Learning Framework for Everyone', 
-    created_at          = models.CharField(max_length=24) # '2015-11-07T01:19:20Z', 
-    login               = models.CharField(max_length=128) # 'tensorflow', 
-    forks_count         = models.DecimalField(decimal_places=0, max_digits=16) # '74685', 
-    stargazers_count    = models.DecimalField(decimal_places=0, max_digits=16) # '127613'
+    id                  = models.DecimalField(decimal_places=0, max_digits=32, primary_key=True)
+    html_url            = models.CharField(max_length=128)
+    name                = models.CharField(max_length=128)
+    description         = models.CharField(max_length=256)
+    created_at          = models.CharField(max_length=24)
+    login               = models.CharField(max_length=128)
+    forks_count         = models.DecimalField(decimal_places=0, max_digits=16) 
+    stargazers_count    = models.DecimalField(decimal_places=0, max_digits=16)
 
 """ Example Repository:
         {'csrfmiddlewaretoken': 'Z1vlk5jq7CfMiqtonFNwWgD5voJLOosMqaUAhVbvGMyYq84JFzvmNmb21Fnbaq40',
