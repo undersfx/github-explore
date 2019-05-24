@@ -7,6 +7,10 @@ Simple exercice to fetch and save trending repos on github
 
 `pip3 install pipenv`
 
+... na pasta do projeto:
+
+`pipenv shell`
+
 - Instalar dependências
 
 `pipenv install`
