@@ -48,14 +48,13 @@ Rodar Testes:
 ### Web App
     - Django: Web Framework
     - Gunicorn: Web Server
-    - WhiteNoise (django-heroku): Gerenciar arquivos estáticos
-    - Pipenv: Gestão de dependencias
+    - WhiteNoise (django-heroku): Gerenciar arquivos estáticos do Django/DRF
 
 ### Deploy
     - Github + Heroku CLI: Auto Deploy
-    - Pipenv: Variaveis de Ambientes em dev (.env file)
     - SQLite3: Banco para testes em dev
-    - Heroku-Postgress: Banco em prod
+    - Heroku Postgres: Banco em prod
+    - Pipenv: Gerenciamento de Dependências dev/prod e Variaveis de Ambientes em dev (.env file)
     - dj_database_url: Configuração automatica dos bancos de dev/prod
 
 ### API Github
